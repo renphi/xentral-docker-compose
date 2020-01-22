@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  xentral-service:
+    image: lobaro/xentral-docker
+    ports:
+      - 4000:80
+    volumes:
+      - ./userdata:/var/www/html/userdata
+      - ./conf:/var/www/html/conf
+      - ./download:/var/www/html/download
+    links:
+    - mysql-service
+
+  mysql-service:
+    image: mysql:5.7
+    volumes:
+      - ./sqldump:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'xentral'
+      MYSQL_USER: 'xxx'
+      MYSQL_PASSWORD: 'xxx'
+      MYSQL_ROOT_PASSWORD: 'xxx'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+    - 4001:8080
