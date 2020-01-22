@@ -27,10 +27,10 @@ Each sql file in the sqldump folder will be imported automatically into the mysq
 
 To create a new backup you can use:
     
-    docker exec erp_mysql-service_1 sh -c 'exec mysqldump --databases xentral -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/to/your/local/sqldump/folder/xentral-backup.sql
+    docker exec erp_mysql-service_1 sh -c 'exec mysqldump --databases xentral -uroot -p"$MYSQL_ROOT_PASSWORD"' > ./sqldump/xentral-backup.sql
 
 After restarting docker-compose (down/up) this sqldump will automatically be imported.
 
 To manually import a sqldump you can use:
     
-    docker exec -i erp_mysql-service_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < /some/path/to/your/local/sqldump/folder/xentral-backup.sql
+    docker exec -i erp_mysql-service_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < .sqldump/xentral-backup.sql
