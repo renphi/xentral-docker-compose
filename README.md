@@ -33,4 +33,4 @@ After restarting docker-compose (down/up) this sqldump will automatically be imp
 
 To manually import a sqldump you can use:
     
-    docker exec -i erp_mysql-service_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < .sqldump/xentral-backup.sql
+    docker exec -i erp_mysql-service_1 sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./sqldump/xentral-backup.sql
